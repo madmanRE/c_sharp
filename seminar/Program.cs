@@ -368,3 +368,100 @@ Console.WriteLine($"Расстояние равно: {Math.Abs(Math.Pow((x1-x2)*
 //Функцию Math.Abs - знаю. 
 //Не знаю как возводить в степень, конструкция ** не работает, мб есть удобный формат без встроенной функции Math.Pow?
 */
+/*
+int n = int.Parse(Console.ReadLine());
+
+for (int i=1; i <= n; i++)
+{
+  Console.WriteLine($"Квадрат числа {i} равен:_________{i*i}");
+}
+
+*/
+/*
+int sum = 0;
+int n = int.Parse(Console.ReadLine());
+for(int i = 1; i<=n; i++)
+{
+  sum+=i;
+}
+Console.WriteLine(sum);
+*/
+
+/*
+int n = int.Parse(Console.ReadLine());
+int z = int.Parse(Console.ReadLine());
+int res = 1;
+
+for (int i = 1; i<=z; i++)
+{
+  res=(res*n);
+}
+
+Console.WriteLine(res);
+*/
+
+/*
+int res = int.Parse(Console.ReadLine());
+int s = 0;
+
+while (res != 0)
+{
+  res/=10;
+  s+=1;
+}
+
+Console.WriteLine(s);
+*/
+
+//Домашнее задание к семинару 3
+
+/*
+//Найти кубы чисел от о до N
+
+int N = int.Parse(Console.ReadLine());
+
+for (int i=1; i<=N; i++)
+{
+  Console.WriteLine($"Число {i} в кубе равно:_________  {i*i*i}");
+}
+*/
+
+
+/*
+//Посчитать сумму цифр в числе
+
+int N = int.Parse(Console.ReadLine());
+int res = 0;
+
+while(N>0)
+{
+  res+=N%10;
+  N/=10;
+}
+
+Console.WriteLine(res);
+*/
+
+
+/*
+//Написать программу вычисления произведения чисел от 1 до N
+
+int res = 1;
+int N = int.Parse(Console.ReadLine());
+
+for (int i = 1; i<=N; i++)
+{
+  res*=i;
+}
+Console.WriteLine(res);
+*/
+
+/*
+//Показать кубы чисел, заканчивающихся на четную цифру
+
+int N = int.Parse(Console.ReadLine());
+if(N%2==0)
+{
+  Console.Write(N*N*N);
+}
+*/
