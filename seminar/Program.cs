@@ -678,3 +678,215 @@ for (int i = 0; i < array.Length; i++)
 Console.WriteLine($"\nРазница числен между максимальным ({ma}) и минимальным элементами массива ({mi}) равна {ma-mi}");
 Console.WriteLine($"\nРазница абсолютных значений между максимальным ({ma}) и минимальным элементами массива ({mi}) равна {Math.Abs(Math.Abs(ma) - Math.Abs(mi))}");
 */
+
+/*
+int a = int.Parse(Console.ReadLine());
+int b = int.Parse(Console.ReadLine());
+int c = int.Parse(Console.ReadLine());
+
+if(a+b > c)
+{
+  if(a+c > b)
+  {
+    if (c+b > a)
+    {
+      Console.WriteLine("YES");
+    }
+    else
+    {
+      Console.WriteLine("NO");
+    }
+  }
+  else{
+    Console.WriteLine("NO");
+  }
+}
+else
+{
+  Console.WriteLine("NO");
+}
+*/
+
+
+/*
+int a = 10;
+string q = "";
+
+while (a > 0)
+{
+  int x = a % 2;
+  q += x.ToString();
+  a = a / 2;
+}
+
+char[] res = q.ToCharArray();
+Array.Reverse(res);
+Console.WriteLine(res);
+*/
+
+
+//На числах
+/*
+int a = int.Parse(Console.ReadLine());
+int xxx = a;
+int size = 0;
+while (xxx > 0)
+{
+  xxx = xxx / 2;
+  size += 1;
+}
+
+int[] q = new int [size];
+int c = 0;
+while (a > 0)
+{
+  q[c] = a%2;
+  a = a/2;
+  c += 1;
+}
+int i = q.Length-1;
+
+while (i >= 0) 
+{
+  Console.Write(q[i]);
+  i--;
+}
+*/
+
+
+
+//Домашнее задание к семинару 5.
+
+//Задание 1. Найти точку пересечения двух прямых заданных уравнением y = k1 * x + b1, y = k2 * x + b2, b1 k1 и b2 и k2 заданы.
+
+/*
+int k1 = int.Parse(Console.ReadLine());
+int k2 = int.Parse(Console.ReadLine());
+int b1 = int.Parse(Console.ReadLine());
+int b2 = int.Parse(Console.ReadLine());
+
+if (k1 != k2)
+{
+  int x = (b2 - b1) / (k1 - k2);
+  Console.WriteLine($"x = {x}, y = {k1*x+b1}");
+}
+else
+{
+  Console.WriteLine("Это параллельные прямые");
+}
+*/
+
+
+//Задание 2. Показать числа Фибоначи. 
+
+/*
+int [] fib = new int [20];
+fib[0] = 0;
+fib[1] = 1;
+for(int i = 2; i < fib.Length; i++)
+{
+  fib[i] = fib[i-1] + fib[i-2];
+}
+for (int i = 0; i<fib.Length; i++)
+{
+  Console.Write($"{fib[i]} ");
+}
+*/
+
+
+//Задание 4.
+//Программа копирования массива.
+/*
+int[] array = new int[10];
+Random rand = new Random();
+for (int i = 0; i < array.Length; i++)
+  array[i] = rand.Next(-990, 990);
+Console.WriteLine($"Исходный массив:");
+for (int i = 0; i < array.Length; i++)
+  Console.Write($"({array[i]})");
+int[] newarray = new int[array.Length];
+for (int i = 0; i < array.Length; i++)
+  newarray[i] = array[i];
+Console.WriteLine($"\nКопированная версия массива:");  
+for (int i = 0; i < newarray.Length; i++)
+  Console.Write($"[{newarray[i]}]");
+*/
+
+
+//Задание 3.
+//Написать программу масштабирования фигуры.
+
+//Вершины фигуры:
+/*
+string koef()
+{
+  Console.WriteLine("Введите коэффициент:");
+  Console.WriteLine("Внимание! Если вводите ДРОБНЫЙ КОЭФФИЦИЕНТ, делайте это через запятую. Пример: 1,8 или 0,5, а не 1.8 иди 0.5!!!");
+  string k = Console.ReadLine();
+  if(k.Contains('.'))
+  {
+    Console.WriteLine("Неверный формат ввода, дробные коэффициенты НЕОБХОДИМО ВВОДИТЬ С ЗАПЯТОЙ, А НЕ ТОЧКОЙ!\nВведите коэффициент снова:");
+    return (koef());
+  }
+  else return (k);
+}
+
+
+string fig()
+{
+  Console.WriteLine("Введите вершины фигуры в формате (0;0) (2;0) (2;2) (0;2)");
+  Console.WriteLine("Обратите внимание! Вводить необходимо исключительно в указанном формате: (число,число) (число,число)...\nОбратите внимание! Между парами скобок пробелы, сами же скобки содержат 2 числа, разделенных точкой с запятой!");
+  string vershini_figuri = Console.ReadLine();
+  if(vershini_figuri.Contains(','))
+  {
+    Console.WriteLine("Неверный формат ввода. Повторите ввод данных");
+    return(fig());
+  }
+  else return(vershini_figuri);
+}
+
+string vershini_figuri = fig();
+Console.WriteLine($"Исходные значения: {vershini_figuri}");
+int[] array = new int[8];
+int x = 0;
+
+for (int i = 0; i<vershini_figuri.Length; i++)
+{
+  if(vershini_figuri[i] != '(' && vershini_figuri[i] != ')' && vershini_figuri[i] != ' ' && vershini_figuri[i] != ';')
+  {
+    array[x] = int.Parse(vershini_figuri[i].ToString());
+    x += 1;
+  }
+}
+
+string k = koef();
+
+{
+try
+{
+  int numericValue;
+  bool isNumber = int.TryParse(k, out numericValue);
+  int z = int.Parse(k.ToString());
+  for (int i = 0; i<array.Length; i++) array[i] = array[i] * z;
+  Console.WriteLine("Новый масштаб фигуры:");
+  for (int i = 0; i<array.Length-1; i+=2) Console.Write($"({array[i]};{array[i+1]}) ");
+}
+catch
+{
+  double doubleValue;
+  bool isDouble = double.TryParse(k, out doubleValue);
+  double l = System.Convert.ToDouble(k.ToString());
+  double[] newarray = new double [array.Length];
+  for(int i = 0; i<array.Length; i++)
+  {
+    newarray[i] = double.Parse(array[i].ToString());
+    newarray[i] = newarray[i] * l;
+  }
+
+  Console.WriteLine("Новый масштаб фигуры:");
+  for (int i = 0; i < array.Length - 1; i += 2) Console.Write($"({newarray[i]};{newarray[i + 1]}) ");
+}
+}
+*/
+
+
