@@ -890,3 +890,250 @@ catch
 */
 
 
+//Семинар 6.
+
+/*
+Console.WriteLine("Введите 2 числа, чтобы задать размерность массива");
+int n = int.Parse(Console.ReadLine());
+int m = int.Parse(Console.ReadLine());
+int flag = 0;
+Console.WriteLine("А теперь ПАЖАЛСТА введите ваше число");
+int x = int.Parse(Console.ReadLine());
+Random random = new Random();
+int [,] matrix = new int [n,m];
+for(int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++) 
+  {
+    matrix[i, j] = random.Next(0 , 9);
+  } 
+
+}
+
+
+
+Console.WriteLine("Вот ваш массив");
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    Console.Write(matrix[i,j]);
+  }
+  Console.WriteLine(" ");
+}
+
+
+
+int count = 0;
+
+while(flag == 0 || count<matrix.GetLength(0)*matrix.GetLength(1))
+  for (int i = 0; i < matrix.GetLength(0); i++)
+  {
+    for (int j = 0; j < matrix.GetLength(1); j++)
+    {
+      if(matrix[i, j] == x)
+      {
+        Console.WriteLine($"Позиция числа в массиве строка: {i} | столбец: {j}");
+        flag = 1;
+        break;
+      }
+      else
+      {
+      count += 1;
+      }
+    if(flag==1) break;
+  }
+  }
+Console.WriteLine(" ");
+
+if(flag == 0) Console.WriteLine("Числа нет в массиве");
+
+
+
+
+/*
+Console.WriteLine("А теперь вот так!");
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    if(matrix[i, j] % 2 == 0) matrix [i, j] = matrix[i, j] * -1;
+    Console.Write($"{matrix[i,j]} ");
+  }
+  Console.WriteLine();
+}
+*/
+
+
+//Домашнее задание к семинару 6.
+
+//Задание 1. Заполнить двумерный массив, размером NxM вещественными числами.
+
+/*
+Console.WriteLine("Введите 2 числа: размерность массива");
+int n = int.Parse(Console.ReadLine());
+int m = int.Parse(Console.ReadLine());
+
+Random random = new Random();
+double[,] matrix = new double[n, m];
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    matrix[i, j] = Math.Round(random.NextDouble()*random.Next(-10, 10),2);
+  }
+
+}
+
+Console.WriteLine("А вот и ваш массивчик!");
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    Console.Write($"{matrix[i,j]} ");
+  }
+  Console.WriteLine("");
+
+}
+*/
+
+
+//Задание 2. Задать двумерный массив следующим правилом: Aₘₙ = m+n
+//Если считать с нуля, как принято в программировании
+//Если считать с единицы (присваивая 0 позиции 1, то все аналогично, но формула = m+n+1)
+
+/*
+Console.WriteLine("Введите 2 числа: размерность массива");
+int n = int.Parse(Console.ReadLine());
+int m = int.Parse(Console.ReadLine());
+
+int[,] matrix = new int[n, m];
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    matrix[i, j] = j+i;
+  }
+
+}
+
+Console.WriteLine("А вот и ваш массивчик!");
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    Console.Write($"{matrix[i, j]} ");
+  }
+  Console.WriteLine("");
+
+}
+*/
+
+
+//Задание 3. В двумерном массиве заменить элементы, у которых оба индекса чётные на их квадраты
+
+/*
+Console.WriteLine("Введите 2 числа: размерность массива");
+int n = int.Parse(Console.ReadLine());
+int m = int.Parse(Console.ReadLine());
+
+Random random = new Random();
+int[,] matrix = new int[n, m];
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    matrix[i, j] = random.Next(0,9);
+  }
+
+}
+
+Console.WriteLine("А вот и ваш массивчик!");
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    Console.Write($"{matrix[i, j]} ");
+  }
+  Console.WriteLine("");
+
+}
+
+Console.WriteLine("А теперь меняем значения, элементов с четными индексами");
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    if(i % 2 == 0 && j % 2 == 0) matrix[i,j] = matrix[i,j] * matrix[i,j];
+  }
+
+}
+
+Console.WriteLine("\nИзмененный массив!");
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    Console.Write($"{matrix[i, j]} ");
+  }
+  Console.WriteLine("");
+
+}
+*/
+
+
+//Задание 4. Написать программу, которая обменивает элементы первой строки и последней строки.
+
+/*
+Console.WriteLine("Введите 2 числа: размерность массива");
+int n = int.Parse(Console.ReadLine());
+int m = int.Parse(Console.ReadLine());
+
+Random random = new Random();
+int[,] matrix = new int[n, m];
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    matrix[i, j] = random.Next(0, 9);
+  }
+
+}
+
+Console.WriteLine("А вот и ваш массивчик!");
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    Console.Write($"{matrix[i, j]} ");
+  }
+  Console.WriteLine("");
+
+}
+
+
+Console.WriteLine("\nА теперь изменяем массив, меняя местами элементы первой и последней строки");
+for(int j = 0; j<m; j++)
+{
+  int temp = matrix[0, j];
+  matrix[0, j] = matrix[matrix.GetLength(0)-1, j];
+  matrix[matrix.GetLength(0)-1, j] = temp;
+}
+
+Console.WriteLine("\nИзмененный массив");
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    Console.Write($"{matrix[i, j]} ");
+  }
+  Console.WriteLine("");
+}
+*/
