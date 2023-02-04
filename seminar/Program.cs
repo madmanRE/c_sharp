@@ -1137,3 +1137,212 @@ for (int i = 0; i < matrix.GetLength(0); i++)
   Console.WriteLine("");
 }
 */
+
+
+//Семинар 7
+
+/*
+Console.WriteLine("Введите 2 числа: размерность массива");
+int n = int.Parse(Console.ReadLine());
+int m = int.Parse(Console.ReadLine());
+
+Random random = new Random();
+int[,] matrix = new int[n, m];
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    matrix[i, j] = random.Next(0, 9);
+  }
+}
+
+Console.WriteLine("А вот и ваш массивнчик");
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    Console.Write($"{matrix[i,j]} ");
+  }
+  Console.WriteLine("");
+}
+
+int res = 0;
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    if(i == j) res+=matrix[i,j];
+  }
+}
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  res+=matrix[i,i];
+}
+
+
+Console.WriteLine($"Сумма элементов главной диагонали равна: {res}");
+
+*/
+
+//Домашнее задание к семинару 7.
+//Задача 1. Написать программу, упорядочивания по убыванию элементы каждой строки двумерной массива.
+
+/*
+Console.WriteLine("Введите 2 числа: размерность массива");
+int n = int.Parse(Console.ReadLine());
+int m = int.Parse(Console.ReadLine());
+
+Random random = new Random();
+int[,] matrix = new int[n, m];
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    matrix[i, j] = random.Next(0, 9);
+  }
+}
+
+Console.WriteLine("А вот и ваш массивнчик");
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    Console.Write($"{matrix[i, j]} ");
+  }
+  Console.WriteLine("");
+}
+
+Console.WriteLine("-----------------------------------------------");
+Console.WriteLine("Решение");
+Console.WriteLine("-----------------------------------------------");
+
+int[] tempmatrix = new int[n];
+
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    tempmatrix[j] = matrix[i,j];
+  }
+for (int z = 0; z < tempmatrix.LongLength; z++)
+    for (int j = 0; j < tempmatrix.Length-1; j++)
+    {
+      if (tempmatrix[j] > tempmatrix[j+1])
+      {
+        int temp = tempmatrix[j+1];
+        tempmatrix[j+1] = tempmatrix[j];
+        tempmatrix[j] = temp;
+      }
+    }
+  for (int x = 0; x < tempmatrix.Length; x++) Console.Write($"{tempmatrix[x]} ");
+  Console.WriteLine("");
+  }
+
+*/
+
+
+//Задание 2. Написать программу, которая в двумерном массиве заменяет строки на столбцы или сообщить, что это невозможно (в случае, если матрица не квадратная).
+
+/*
+Console.WriteLine("Введите 2 числа: размерность массива");
+int n = int.Parse(Console.ReadLine());
+int m = int.Parse(Console.ReadLine());
+
+if (n!=m) Console.WriteLine("Это невозможно!");
+else
+{
+Random random = new Random();
+int[,] matrix = new int[n, m];
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    matrix[i, j] = random.Next(0, 9);
+  }
+}
+
+Console.WriteLine("А вот и ваш массивнчик");
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    Console.Write($"{matrix[i, j]} ");
+  }
+  Console.WriteLine("");
+}
+
+Console.WriteLine("-----------------------------------------------");
+Console.WriteLine("Решение");
+Console.WriteLine("-----------------------------------------------");
+
+  for (int i = 0; i < matrix.GetLength(0); i++)
+  {
+    for (int j = 0; j < matrix.GetLength(1); j++)
+    {
+      Console.Write($"{matrix[j, i]} ");
+    }
+    Console.WriteLine("");
+  }
+}
+*/
+
+
+//Задание 3.В прямоугольной матрице найти строку с наименьшей суммой элементов.
+
+/*
+Console.WriteLine("Введите 2 числа: размерность массива");
+int n = int.Parse(Console.ReadLine());
+int m = int.Parse(Console.ReadLine());
+
+Random random = new Random();
+int[,] matrix = new int[n, m];
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    matrix[i, j] = random.Next(0, 9);
+  }
+}
+
+Console.WriteLine("А вот и ваш массивнчик");
+
+int summa = 0;
+int [] arr = new int[n];
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    Console.Write($"{matrix[i, j]} ");
+    summa += matrix[i,j];
+  }
+  Console.Write($"Сумма элементов строки ===>>> __{summa}__");
+  arr[i] = summa;
+  Console.WriteLine("");
+  summa = 0;
+}
+
+int res = 0;
+int minimal = 9999999;
+
+for (int i = 0; i < arr.Length; i++)
+{
+  if (arr[i] < minimal)
+  {
+    minimal = arr[i];
+    res = i;
+  }
+}
+
+Console.WriteLine($"Строка с наименьшей суммой элементов: {res}");
+*/
