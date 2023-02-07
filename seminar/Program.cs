@@ -1346,3 +1346,373 @@ for (int i = 0; i < arr.Length; i++)
 
 Console.WriteLine($"Строка с наименьшей суммой элементов: {res}");
 */
+
+//Метод создания массива
+/*
+int [,] MakeArray()
+{
+  Console.WriteLine("Введите 2 числа: размерность массива");
+  int n = int.Parse(Console.ReadLine());
+  int m = int.Parse(Console.ReadLine());
+
+  Random random = new Random();
+  int[,] matrix = new int[n, m];
+
+  for (int i = 0; i < matrix.GetLength(0); i++)
+  {
+    for (int j = 0; j < matrix.GetLength(1); j++)
+    {
+      matrix[i, j] = random.Next(0, 9);
+    }
+  }
+  return matrix;
+}
+
+int [,] matrix = MakeArray();
+*/
+
+//Семинар 8
+
+
+
+/*
+
+Составить частотный словарь элементов двумерного массива
+
+Частотный словарь содержит информацию о том, сколько раз встречается элемент входных данных.
+
+Пример: Есть набор данных
+
+{ 1, 9, 9, 0, 2, 8, 0, 9 }
+
+частотный массив может быть представлен так:
+
+0 встречается 2 раза
+1 встречается 1 раз
+2 встречается 1 раз
+8 встречается 1 раз
+9 встречается 3 раза
+
+Если набор данных - таблица
+
+1, 2, 3
+4, 6, 1
+2, 1, 6
+
+на выходе ожидаем получить
+
+1 встречается 3 раза
+2 встречается 2 раз
+3 встречается 1 раз
+4 встречается 1 раз
+6 встречается 2 раза
+
+Пример частотного массива для текстовых данных: Входные данные:
+
+Частотный анализ – это один из методов криптоанализа, основывающийся на предположении о существовании нетривиального статистического распределения отдельных символов и их последовательностей как в открытом тексте, так и шифрованном тексте, которое с точностью до замены символов будет сохраняться в процессе шифрования и дешифрования.
+Символ я встречается 6 раз.   Частота 1.80%
+Символ м встречается 6 раз.   Частота 1.80%
+Символ ь встречается 5 раз.   Частота 1.50%
+Символ ы встречается 5 раз.   Частота 1.50%
+Символ з встречается 4 раза.  Частота 1.20%
+Символ х встречается 3 раза.  Частота 0.90%
+Символ ш встречается 3 раза.  Частота 0.90%
+Символ ф встречается 3 раза.  Частота 0.90%
+Символ ч встречается 3 раза.  Частота 0.90%
+Символ й встречается 3 раза.  Частота 0.90%
+Символ , встречается 3 раза.  Частота 0.90%
+Символ щ встречается 2 раза.  Частота 0.60%
+Символ ю встречается 2 раза.  Частота 0.60%
+Символ у встречается 2 раза.  Частота 0.60%
+Символ г встречается 2 раза.  Частота 0.60%
+Символ ж встречается 1 раз.   Частота 0.30%
+Символ э встречается 1 раз.   Частота 0.30%
+Символ – встречается 1 раз.   Частота 0.30%
+Символ б встречается 1 раз.   Частота 0.30%
+Символ ц встречается 1 раз.   Частота 0.30%
+Символ . встречается 1 раз.   Частота 0.30%
+*/
+
+
+
+//Задача 1 на одномерном массиве
+
+/*
+Random random = new Random();
+int [] array = new int [30];
+for (int i = 0; i<array.Length; i++) array[i] = new Random().Next(0,9);
+Console.WriteLine("А вот и массив");
+for (int i = 0; i < array.Length; i++) Console.Write($"{array[i]} ");
+
+
+Array.Sort(array);
+Console.WriteLine("");
+for (int i = 0; i < array.Length; i++) Console.Write($"{array[i]} ");
+Console.WriteLine("");
+
+
+string x = String.Empty;
+int counter = 1;
+
+for (int i = 0; i < array.Length-1; i++)
+{
+  if (array[i] == array[i+1]) counter += 1;
+  else
+  {
+    x+= $"Элемент {array[i].ToString()}";
+    x+= " встречается ";
+    x+= counter.ToString();
+    x+= "\n";
+    counter = 1;
+  }
+}
+
+counter = 1;
+
+Array.Reverse(array);
+for (int i = 0; i < array.Length - 1; i++)
+{
+  if (array[i] == array[i + 1]) counter += 1;
+  else
+  {
+    x += $"Элемент {array[i].ToString()}";
+    x += " встречается ";
+    x += counter.ToString();
+    x += " ";
+    counter = 1;
+    break;
+  }
+}
+
+
+string[] res = x.Split(" ");
+for (int i = 0; i<res.Length; i++) Console.Write($"{res[i]} ");
+*/
+
+//Задача 2 на двумерном массиве
+
+/*
+
+int[,] MakeArray()
+{
+  Console.WriteLine("Введите 2 числа: размерность массива");
+  int n = int.Parse(Console.ReadLine());
+  int m = int.Parse(Console.ReadLine());
+
+  Random random = new Random();
+  int[,] matrix = new int[n, m];
+
+  for (int i = 0; i < matrix.GetLength(0); i++)
+  {
+    for (int j = 0; j < matrix.GetLength(1); j++)
+    {
+      matrix[i, j] = random.Next(0, 9);
+    }
+  }
+  return matrix;
+}
+
+int[,] matrix = MakeArray();
+int coun = 0;
+
+for (int i = 0; i<matrix.GetLength(0); i++)
+{
+  for (int j = 0; j<matrix.GetLength(1); j++)
+  {
+    Console.Write($"{matrix[i,j]} ");
+    coun += 1;
+  }
+  Console.WriteLine("");
+}
+
+
+int[] array = new int[coun];
+int counNewMaasive = 0;
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    array[counNewMaasive] = matrix[i,j];
+    counNewMaasive += 1;
+  }
+}
+
+
+
+
+Array.Sort(array);
+Console.WriteLine("");
+for (int i = 0; i < array.Length; i++) Console.Write($"{array[i]} ");
+Console.WriteLine("");
+
+
+string x = String.Empty;
+int counter = 1;
+
+for (int i = 0; i < array.Length - 1; i++)
+{
+  if (array[i] == array[i + 1]) counter += 1;
+  else
+  {
+    x += $"Элемент {array[i].ToString()}";
+    x += " встречается ";
+    x += counter.ToString();
+    x += "\n";
+    counter = 1;
+  }
+}
+
+counter = 1;
+
+Array.Reverse(array);
+for (int i = 0; i < array.Length - 1; i++)
+{
+  if (array[i] == array[i + 1]) counter += 1;
+  else
+  {
+    x += $"Элемент {array[i].ToString()}";
+    x += " встречается ";
+    x += counter.ToString();
+    x += " ";
+    counter = 1;
+    break;
+  }
+}
+
+
+string[] res = x.Split(" ");
+for (int i = 0; i < res.Length; i++) Console.Write($"{res[i]} ");
+
+*/
+
+
+//Задача 3 на строках
+
+
+/*
+string text = Console.ReadLine();
+string[]x = text.Split(" ");
+string newx = string.Join("",x);
+Console.WriteLine(newx);
+
+string res = string.Empty;
+
+for (int i = 0; i<newx.Length; i++) res += newx[i].ToString().ToLower();
+
+Console.WriteLine(res);
+
+string [] array = new string [res.Length];
+for (int i = 0; i<res.Length; i++) array[i] = res[i].ToString();
+
+Array.Sort(array);
+
+
+Console.WriteLine("----Решение---------");
+
+
+string tempx = String.Empty;
+int counter = 1;
+
+for (int i = 0; i < array.Length - 1; i++)
+{
+  if (array[i] == array[i + 1]) counter += 1;
+  else
+  {
+    tempx += $"Элемент {array[i]}";
+    tempx += " встречается ";
+    tempx += counter.ToString();
+    tempx += " Частота элемента = ";
+    tempx += (counter % array.Length).ToString();
+    tempx += "% ";
+    tempx += "\n";
+    counter = 1;
+  }
+}
+
+counter = 1;
+
+Array.Reverse(array);
+for (int i = 0; i < array.Length - 1; i++)
+{
+  if (array[i] == array[i + 1]) counter += 1;
+  else
+  {
+    tempx += $"Элемент {array[i]}";
+    tempx += " встречается ";
+    tempx += counter.ToString();
+    tempx += " Частота элемента = ";
+    tempx += (counter % array.Length).ToString();
+    tempx += "% ";
+    counter = 1;
+    break;
+  }
+}
+
+
+string[] tempres = tempx.Split(" ");
+for (int i = 0; i < tempres.Length; i++) Console.Write($"{tempres[i]} ");
+
+*/
+
+
+// Алгоритм на строках с пробелами и Большими буквами
+
+/*
+string text = Console.ReadLine();
+string[] array = new string [text.Length];
+for (int i = 0; i < text.Length; i++) array[i] = text[i].ToString();
+for (int i = 0; i<array.Length; i++) Console.Write($"{array[i]} ");
+
+Array.Sort(array);
+
+
+Console.WriteLine("\n---------Решение---------");
+
+
+string tempx = String.Empty;
+int counter = 1;
+
+for (int i = 0; i < array.Length - 1; i++)
+{
+  if (array[i] == array[i + 1]) counter += 1;
+  else
+  {
+    tempx += $"Элемент {array[i]}";
+    tempx += " встречается ";
+    tempx += counter.ToString();
+    tempx += ". Частота элемента = ";
+    tempx += ((float)counter / array.Length*100).ToString();
+    tempx += "% ";
+    tempx += "\n";
+    counter = 1;
+  }
+}
+
+counter = 1;
+
+Array.Reverse(array);
+for (int i = 0; i < array.Length - 1; i++)
+{
+  if (array[i] == array[i + 1]) counter += 1;
+  else
+  {
+    tempx += $"Элемент {array[i]}";
+    tempx += " встречается ";
+    tempx += counter.ToString();
+    tempx += ". Частота элемента = ";
+    tempx += ((float)counter / array.Length * 100).ToString();
+    tempx += "% ";
+    counter = 1;
+    break;
+  }
+}
+
+
+string[] tempres = tempx.Split(" ");
+for (int i = 0; i < tempres.Length; i++) Console.Write($"{tempres[i]} ");
+*/
+
+//Домашнее задание к семинару 8.
+
+//Задача 1.
