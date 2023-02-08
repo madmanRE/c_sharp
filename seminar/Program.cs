@@ -1715,4 +1715,284 @@ for (int i = 0; i < tempres.Length; i++) Console.Write($"{tempres[i]} ");
 
 //Домашнее задание к семинару 8.
 
-//Задача 1.
+//Задача 1. Найти произведение двух матриц
+
+/*
+Console.WriteLine("Создаем 2 матрицы: matrixA & matrixB\nПредпологается, что размерность матриц должна быть одинаковой, т.к. не сказано иного\n");
+
+int[,] MakeArray(int n, int m)
+{
+  Random random = new Random();
+  int[,] matrix = new int[n, m];
+
+  for (int i = 0; i < matrix.GetLength(0); i++)
+  {
+    for (int j = 0; j < matrix.GetLength(1); j++)
+    {
+      matrix[i, j] = random.Next(0, 9);
+    }
+  }
+  return matrix;
+}
+
+Console.WriteLine("Введите 2 числа: размерность массива");
+int n = int.Parse(Console.ReadLine());
+int m = int.Parse(Console.ReadLine());
+
+int[,] matrixA = MakeArray(n, m);
+int[,] matrixB = MakeArray(n, m);
+
+Console.WriteLine("\nПечатаем обе матрицы");
+Console.WriteLine("");
+
+for (int i = 0; i < matrixA.GetLength(0); i++)
+{
+  for (int j = 0; j < matrixB.GetLength(1); j++)
+  {
+    Console.Write($"{matrixA[i,j]} ");
+  }
+  Console.WriteLine(" ");
+}
+
+Console.WriteLine("");
+
+for (int i = 0; i < matrixA.GetLength(0); i++)
+{
+  for (int j = 0; j < matrixB.GetLength(1); j++)
+  {
+    Console.Write($"{matrixB[i,j]} ");
+  }
+  Console.WriteLine(" ");
+}
+
+Console.WriteLine("\n__________________Решение__________________\n");
+
+int[,] matrixC = new int[n, m];
+for (int i = 0; i < matrixA.GetLength(0); i++)
+{
+  for (int j = 0; j < matrixA.GetLength(1); j++) matrixC[i,j] = matrixA[i,j] * matrixB[i,j];
+}
+
+
+for (int i = 0; i < matrixA.GetLength(0); i++)
+{
+  for (int j = 0; j < matrixA.GetLength(1); j++) 
+  {
+  Console.Write($"{matrixC[i,j]} ");
+  }
+  Console.WriteLine("");
+}
+Console.WriteLine("");
+
+*/
+
+
+//Задание 2. В двумерном массиве целых чисел. Удалить строку и столбец, на пересечении которых расположен наименьший элемент.
+
+/*
+int[,] MakeArray()
+{
+  Console.WriteLine("Введите 2 числа: размерность массива");
+  int n = int.Parse(Console.ReadLine());
+  int m = int.Parse(Console.ReadLine());
+
+  Random random = new Random();
+  int[,] matrix = new int[n, m];
+
+  for (int i = 0; i < matrix.GetLength(0); i++)
+  {
+    for (int j = 0; j < matrix.GetLength(1); j++)
+    {
+      matrix[i, j] = random.Next(-100, 999);
+    }
+  }
+  return matrix;
+}
+
+int[,] matrix = MakeArray();
+
+Console.WriteLine("\nПечатаем массив\n");
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j ++)
+  {
+    Console.Write($"{matrix[i,j]} ");
+  }
+  Console.WriteLine("");
+}
+
+int len = 0;
+int hight = 0;
+int minnum = matrix[0,0];
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    if (matrix[i,j] < minnum)
+    {
+      minnum = matrix[i,j];
+      len = i;
+      hight = j;
+    }
+  }
+}
+
+Console.WriteLine($"\nНаименьший элемент массива {minnum} располагается в строке {len} столбце {hight}\n");
+Console.WriteLine("\n__________________Решение__________________\n");
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+  if (i == len) continue;
+  else{
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  if (j == hight) continue;
+  else
+  {
+  {
+    Console.Write($"{matrix[i, j]} ");
+  }
+  }
+  Console.WriteLine("");
+}
+}
+
+*/
+
+//Задание 3. Сформировать трехмерный массив не повторяющимися двузначными числами показать его построчно на экран выводя индексы соответствующего элемента
+
+/*
+bool validationelement(int num, int [,,] matrix)
+{
+  for (int i = 0; i < matrix.GetLength(0); i++)
+  {
+    for (int j = 0; j < matrix.GetLength(1); j++)
+    {
+      for (int k = 0; k < matrix.GetLength(2); k++)
+      {
+        if (matrix[i,j,k] == num) return false;
+      }
+    }
+  }
+  return true;
+}
+
+
+int recursionvalidate(int [,,] matrix)
+{
+  Random random = new Random();
+  int x = random.Next(10,99);
+  if (validationelement(x, matrix) == false)
+  return recursionvalidate(matrix);
+  else return x;
+}
+
+
+
+
+
+int [,,] MakeArray()
+{
+  Console.WriteLine("Введите 3 числа: размерность массива\nВнимание!!! Максимальное кол-во уникальных элементов не может превышать 89 штук!!! Иначе будет перегрузка системы!!!");
+  int n = int.Parse(Console.ReadLine());
+  int m = int.Parse(Console.ReadLine());
+  int z = int.Parse(Console.ReadLine());
+
+  Random random = new Random();
+  int[,,] matrix = new int[n, m, z];
+
+  for (int i = 0; i < matrix.GetLength(0); i++)
+  {
+    for (int j = 0; j < matrix.GetLength(1); j++)
+    {
+      for (int k = 0; k < matrix.GetLength(2); k++)
+      {
+       matrix[i,j,k] = recursionvalidate(matrix); 
+      }
+    }
+  }
+  return matrix;
+}
+
+int [,,] matrix = MakeArray();
+
+Console.WriteLine("\nПопробуем вывести массив\n");
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  Console.WriteLine("***");
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    for (int k = 0; k < matrix.GetLength(2); k++)
+    {
+      Console.Write($"{matrix[i, j, k]} ");
+    }
+    Console.WriteLine("");
+  }
+  Console.WriteLine("***\n");
+}
+
+Console.WriteLine("Покажем все элементы на своих позициях\n");
+
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    for (int k = 0; k < matrix.GetLength(2); k++)
+    {
+      Console.WriteLine($"Элемент под индексом {i},{j},{k} -->  {matrix[i, j, k]} ");
+    }
+  }
+}
+
+Console.WriteLine("\nУбедимся в том, что у нас нет повторяющихся значений\n");
+
+int size = matrix.GetLength(0) * matrix.GetLength(1) * matrix.GetLength(2);
+int [] array = new int [size];
+int coun = 0;
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+  for (int j = 0; j < matrix.GetLength(1); j++)
+  {
+    for (int k = 0; k < matrix.GetLength(2); k++)
+    {
+      array[coun] = matrix[i,j,k];
+      coun += 1;
+    }
+  }
+}
+
+Array.Sort(array);
+
+for (int i = 0; i < array.Length; i++) Console.Write($"{array[i]} ");
+*/
+
+
+//Задание 4. Показать треугольник Паскаля *Сделать вывод в виде равнобедренного треугольника
+
+/*
+Console.WriteLine("Введите высоту (ширину основания треугольника)");
+
+int plat = int.Parse(Console.ReadLine());
+int counter = plat-2;
+
+
+Console.WriteLine("\nПолучается такой треугольник\n");
+for (int i = 0; i < plat; i++)
+{
+  for (int j = 0; j < plat; j++)
+  {
+    if (j <= counter)
+    {
+      Console.Write(" ");
+    }
+    else Console.Write($"* ");
+  }
+  Console.WriteLine("");
+  counter -= 1;
+}
+Console.WriteLine("");
+
+*/
