@@ -1996,3 +1996,70 @@ for (int i = 0; i < plat; i++)
 Console.WriteLine("");
 
 */
+
+
+//Семинар 9.
+
+//Задача 1. Вывод числа от 1 до N включительно.
+
+/*
+void recursion(int n)
+
+{ 
+  if(n==0) return; 
+  recursion(n-1);
+  Console.WriteLine(n);
+}
+
+recursion(int.Parse(Console.ReadLine()));
+*/
+
+/*
+int sumrec(int n)
+{
+  int res = 0;
+  void recursion(int x)
+  {
+    if(x==0) return;
+    res += x%10;
+    recursion(x/10);
+  }
+  recursion(n);
+  return res;
+}
+
+Console.WriteLine(sumrec(int.Parse(Console.ReadLine())));
+*/
+
+//----------------------------------------------------------------------------
+
+/*
+int recursion(int a, int b)
+{
+  int res = a;
+  int rec(int a, int b)
+    {
+      if(b==1)return a;
+      res *= a;
+      return rec(a, b-1);
+    }
+  rec(a,b);
+  return res;
+}
+*/
+
+/*
+int recursion(int a, int b)
+{
+  if(b==0)return 1;
+  return a * recursion(a, b-1);
+}
+
+Console.WriteLine($"Введите число и степень: ");
+int a = int.Parse(Console.ReadLine());
+int b = int.Parse(Console.ReadLine());
+
+Console.WriteLine(recursion(a, b));
+*/
+
+//-----------------------------------------------------------------------------
