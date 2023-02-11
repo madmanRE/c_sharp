@@ -2063,3 +2063,111 @@ Console.WriteLine(recursion(a, b));
 */
 
 //-----------------------------------------------------------------------------
+
+//Домашнее задание к семинару 9.
+
+//Задача 1. Показать натуральные числа от N до 1, N задано
+
+/*
+void recursion(int n)
+
+{
+  if (n == 0) return;
+  Console.WriteLine(n);
+  recursion(n - 1);
+}
+
+Console.Write("Введите число: ");
+recursion(int.Parse(Console.ReadLine()));
+*/
+
+//Задача 2. Показать натуральные числа от M до N, N и M заданы
+
+/*
+void recursion(int m, int n)
+
+{
+  if (n == m-1) return;
+  recursion(m, n - 1);
+  Console.WriteLine(n);
+}
+
+Console.WriteLine("Введите 2 числа: ");
+int m = int.Parse(Console.ReadLine());
+int n = int.Parse(Console.ReadLine());
+Console.WriteLine("------------------Решение------------------");
+
+recursion(m,n);
+*/
+
+
+//Задача 3. Найти сумму элементов от M до N, N и M заданы
+
+/*
+int recursion(int m, int n)
+{
+  if(m==n)return m;
+  return m + recursion(m+1, n);
+}
+
+Console.WriteLine("Введите 2 числа (m <= n): ");
+int m = int.Parse(Console.ReadLine());
+int n = int.Parse(Console.ReadLine());
+Console.WriteLine("------------------Решение------------------");
+
+if(m <= n) Console.WriteLine(recursion(m, n));
+//Элемент отладки. Если пользователь вводит числа, где m > n.
+else
+{
+  int temp = n;
+  n = m;
+  m = temp;
+  Console.WriteLine(recursion(m,n));
+}
+*/
+
+
+//Задача 4. Написать программу вычисления функции Аккермана
+
+//Функцию брал в интернете (именно математическую функцию, т.к. никогда по нее не слышал до этого.)
+
+/*
+int AkkRecursion(int m, int n)
+{
+  if (m == 0)
+    return n + 1;
+  else
+    if ((m != 0) && (n == 0))
+    return AkkRecursion(m - 1, 1);
+  else
+    return AkkRecursion(m - 1, AkkRecursion(m, n - 1));
+}
+
+Console.WriteLine("Введите 2 числа: ");
+int m = int.Parse(Console.ReadLine());
+int n = int.Parse(Console.ReadLine());
+Console.WriteLine("------------------Решение------------------");
+Console.WriteLine(AkkRecursion(m, n));
+*/
+
+
+//Задача 5. Фибоначчи. Написать программу показывающие первые N чисел, для которых каждое следующее равно сумме двух предыдущих. 
+//Первые два элемента последовательности задаются пользователем
+
+/*
+int fib(int m, int n, int res)
+{
+  if (res == 1) return m;
+  else if (res == 2) return n;
+  else return fib(m,n,res-1)+fib(m,n,res-2);
+}
+
+
+Console.WriteLine("Введите 2 числа (первые элементы последовательности): ");
+int m = int.Parse(Console.ReadLine());
+int n = int.Parse(Console.ReadLine());
+Console.WriteLine("А теперь задайте кол-во элементов последовательности: ");
+int res = int.Parse(Console.ReadLine());
+Console.WriteLine("------------------Решение------------------");
+Console.WriteLine(fib(m,n,res));
+*/
